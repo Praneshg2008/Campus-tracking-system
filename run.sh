@@ -1,3 +1,7 @@
 #!/bin/bash
-# Execution script for Campus Tracking System
-java -cp "bin:lib/mysql-connector-j-8.3.0.jar:." campus.Main
+# Compile and run the Campus Tracking System
+set -e
+trap "rm -f src/*.class" EXIT
+
+javac -cp "lib/mysql-connector.jar:src" src/*.java
+java -cp "src:lib/mysql-connector.jar:." Main
